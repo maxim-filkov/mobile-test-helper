@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+# PYTHON_ARGCOMPLETE_OK
+
+import argparse
+import logging
+import argcomplete
+import sys
+import coloredlogs
+
+sys.path.append('${UTILS_SHARE_PREFIX}/mth')
+
+from framework.classes.ActionExecutor import ActionExecutor
+from action.ActionRegistry import ActionRegistry
+
+log = logging.getLogger("")
+
+
+def main():
+    """
+    Main entry poinFt to the application.
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--verbose", "-v",
+                        help="Debug output",
+                        action="store_true",
+                        dest="verbose",
+                        default=False,
+                        required=False)
+    subparsers = parser.add_subparsers(title="Available actions",
+                                       dest="action",
+                                       help="List of available actions")
+    for action_key, action in ActionRegistry.registry.iteritems():
+        action_parser = subparsers.add_parser(action.Meta.action,
+                                              help=action.Meta.help)
+        action.init_parser(action_parser)
+
+    argcomplete.autocomplete(parser)
+    args = parser.parse_args()
+
+    log.setLevel(logging.DEBUG if args.verbose else logging.INFO)
+    coloredlogs.install(level=logging.DEBUG if args.verbose else logging.INFO)
+
+    executor = ActionExecutor()
+    delattr(args, "verbose")
+    executor(args)
+
+
+if __name__ == "__main__":
+    main()
