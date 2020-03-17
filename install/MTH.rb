@@ -27,7 +27,7 @@ class Mth < Formula
     def post_install
         # Mth.install_android_sdk_platform_tools
         Mth.install_py_packages
-        Mth.activate_python_argcomplete
+        # Mth.activate_python_argcomplete
         # Mth.set_colorized_logs_format
         # Mth.enable_bash_completion
         # Mth.enable_updated_bash
