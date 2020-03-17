@@ -1,6 +1,6 @@
 # This is installation script for Mobile Test Helper (MTH).
 
-class Mtu < Formula
+class Mth < Formula
     homepage "http://TEST.COM"
     url "https://github.com/maxim-filkov/mobile-test-helper.git"
     version "1.0.0"
@@ -25,15 +25,15 @@ class Mtu < Formula
     end
 
     def post_install
-        # Mtu.install_android_sdk_platform_tools
-        Mtu.install_py_packages
-        Mtu.activate_python_argcomplete
-        # Mtu.set_colorized_logs_format
-        # Mtu.enable_bash_completion
-        # Mtu.enable_updated_bash
+        # Mth.install_android_sdk_platform_tools
+        Mth.install_py_packages
+        Mth.activate_python_argcomplete
+        # Mth.set_colorized_logs_format
+        # Mth.enable_bash_completion
+        # Mth.enable_updated_bash
         # `source ~/.bash_profile`
         # `reset`
-        Mtu.show_colorized("MTH has been installed successfully! Use the command 'mth' to start", "green")
+        Mth.show_colorized("MTH has been installed successfully! Use the command 'mth' to start", "green")
     end
 
     def self.set_android_home
@@ -45,7 +45,7 @@ class Mtu < Formula
     end
 
     def self.install_android_sdk_platform_tools
-        Mtu.show_colorized("Installing Android SDK platform-tools...", "green")
+        Mth.show_colorized("Installing Android SDK platform-tools...", "green")
         `echo "y" | android update sdk --no-ui --filter 'platform-tools'`
     end
 
@@ -54,8 +54,8 @@ class Mtu < Formula
     end
 
     def self.install_py_packages()
-        Mtu.show_colorized("Installing Python packages", "green")
-        `pip install -r "/usr/local/share/mtu/framework/requirements.txt"`
+        Mth.show_colorized("Installing Python packages", "green")
+        `pip install -r "/usr/local/share/mth/framework/requirements.txt"`
         if $?.exitstatus != 0
             exit(1)
         end
