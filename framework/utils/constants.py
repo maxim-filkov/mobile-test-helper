@@ -44,14 +44,3 @@ def downloads_dir():
     :returns string: default downloads directory path.
     """
     return os.path.expanduser('~') + "/Downloads/"
-
-
-def version_by_branch(branch):
-    """
-    Returns version by given branch name, e.g. for "Kabinett" returns "3.18".
-
-    :param branch: branch name, e.g. "Nebbiolo".
-    :returns string: version correspdonging to the given branch.
-    """
-    ascii_diff = 89
-    return "3.{0}".format(ord(branch[0:1].lower()) - ascii_diff)

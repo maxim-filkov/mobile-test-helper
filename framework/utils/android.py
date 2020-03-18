@@ -144,7 +144,7 @@ def install_app(device, app):
     :param app: apk package name, e.g. "calc.apk".
     """
     downloads_path = os.path.expanduser('~') + "/Downloads/"
-    template = "*mango*.apk" if app == "mango" else "*.apk"
+    template = "*.apk"
     newest_apk = max(glob.iglob(downloads_path + template), key=os.path.getctime)
     command = 'adb -s {0} install -r {1}{2}'.format(device, "" if get_sdk_version(device) < "17" else "-d ", newest_apk)
     log.info("Installing '{0}' onto device '{1}'...".format(newest_apk, device))

@@ -83,7 +83,7 @@ class DeviceInfoAction(object):
                 log.info("RAM size: {0}GB".format(android.get_ram_size(device)))
                 log.info("Screen resolution: {0}".format(android.get_resolution(device)))
                 log.info("SDK version: {0}".format(android.get_sdk_version(device)))
-                log.info("IP address: {0}".format(android.get_ip_address(device)))
+                # log.info("IP address: {0}".format(android.get_ip_address(device)))
 
         for device in ios_devices:
             if platform and platform != "ios":

@@ -55,7 +55,6 @@ def get_log(device):
     file_name = str(int(time.time() * 1000)) + ".txt"
     target_dir = os.getcwd()
     log_path = os.path.join(target_dir, file_name)
-    device_time = get_time(device)[11:-13]
     get_log_command = "idevicesyslog -u {0}".format(device)
     log.info("Logging in progress to '" + log_path + "'... To finish press Ctrl+C")
     console.execute(get_log_command, False, log_path)

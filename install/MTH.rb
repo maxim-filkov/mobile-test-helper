@@ -49,9 +49,9 @@ class Mth < Formula
         `echo "y" | android update sdk --no-ui --filter 'platform-tools'`
     end
 
-    def self.activate_python_argcomplete
-        `/usr/local/bin/activate-global-python-argcomplete --dest=/usr/local/etc/bash_completion.d`
-    end
+    # def self.activate_python_argcomplete
+    #     `/usr/local/bin/activate-global-python-argcomplete --dest=/usr/local/etc/bash_completion.d`
+    # end
 
     def self.install_py_packages()
         Mth.show_colorized("Installing Python packages", "green")
