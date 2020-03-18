@@ -41,8 +41,6 @@ class LoggingAction(object):
                                            dest="logging",
                                            help="List of available actions for logging")
 
-        subparsers.add_parser("list", help="List all log modules")
-
         parser = subparsers.add_parser("start", help="Start logging process")
         LoggingAction._init_start_parser(parser)
 
